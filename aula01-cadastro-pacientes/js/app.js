@@ -10,19 +10,19 @@ function calcularIdade(dataNascimento) {
     if (!dataNascimento) return ''; 
 
     const hoje = new Date();
-    const nascimento = new Date(dataNascimento);
+    
+    // Adiciona 'T00:00:00' para forçar a leitura correta no fuso local do navegador
+    const nascimento = new Date(dataNascimento + 'T00:00:00');
 
-    // Diferença inicial dos anos
     let idade = hoje.getFullYear() - nascimento.getFullYear();
     
     const mesAtual = hoje.getMonth();
     const diaAtual = hoje.getDate();
     
-    // Ajuste de fuso horário necessário para inputs do tipo date
-    const mesNascimento = nascimento.getUTCMonth();
-    const diaNascimento = nascimento.getUTCDate();
+    const mesNascimento = nascimento.getMonth();
+    const diaNascimento = nascimento.getDate();
 
-    // Se a pessoa não fez aniversário ainda este ano, subtrai 1
+    // Se ainda não chegou o aniversário este ano, subtrai 1
     if (mesAtual < mesNascimento || (mesAtual === mesNascimento && diaAtual < diaNascimento)) {
         idade--;
     }
