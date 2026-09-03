@@ -61,6 +61,8 @@ function formatarData(dataISO) {
     return `${dia}/${mes}/${ano}`;
 }
 
+
+
 // Evento disparado quando o formulário é enviado
 formulario.addEventListener('submit', (event) => {
     event.preventDefault(); // evita o recarregamento da página
@@ -69,6 +71,7 @@ formulario.addEventListener('submit', (event) => {
     const email = document.getElementById('email').value;
     const nascimento = document.getElementById('nascimento').value;
     const telefone = document.getElementById('telefone').value;
+    const contPaciente = document.getElementById('contador');
 
     // CALCULA DIRETAMENTE AQUI: Gera a idade usando a função e a data inserida
     const idade = calcularIdade(nascimento);
@@ -78,4 +81,7 @@ formulario.addEventListener('submit', (event) => {
     renderizarTabela();
 
     formulario.reset(); // limpa os campos do formulário
+
+    contPaciente.textContent = pacientes.length;
+
 });
