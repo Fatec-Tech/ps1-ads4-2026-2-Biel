@@ -13,5 +13,10 @@
 		"nome": "Ana Costa",
 		"email": "ana.costa@email.com",
 		"nascimento": "2001-07-08"
+	},
+	{
+		"nome": "Biel",
+		"email": "biel@gg.com",
+		"nascimento": "2001-09-11"
 	}
 ]

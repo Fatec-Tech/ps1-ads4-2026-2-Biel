@@ -4,6 +4,8 @@ const formulario = document.getElementById('form-paciente');
 const tabela = document.getElementById('tabela-pacientes');
 const mensagemCarregando = document.getElementById('carregando');
 
+const delay = (ms) => new Promise ((resolve) => setTimeout(resolve,ms));
+
 function adicionarPaciente(nome, email, nascimento) {
 	pacientes.push({ nome, email, nascimento });
 }
@@ -27,10 +29,21 @@ function formatarData(dataISO) {
 	return `${dia}/${mes}/${ano}`;
 }
 
+
 // Nova função: busca os pacientes iniciais a partir do arquivo JSON
 async function carregarPacientesIniciais() {
 	try {
-		const resposta = await fetch('data/pacientes.json');
+
+
+		// simulação de rede lenta ag. 2 segundos (2000 ms)
+
+		await delay (2000);
+
+
+		// fetch com o AbortSignal de 5 segundos (5000 ms)
+
+		const resposta = await fetch('data/pacientes.json', {
+		signal: AbortSignal.timeout(5000)});
 		console.log(resposta);
 
 		// Nem toda resposta é sucesso — precisamos checar antes de usar
