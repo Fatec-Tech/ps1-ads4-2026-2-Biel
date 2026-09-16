@@ -4,6 +4,13 @@ const formulario = document.getElementById('form-paciente');
 const tabela = document.getElementById('tabela-pacientes');
 const mensagemCarregando = document.getElementById('carregando');
 
+const contadorManual  = document.getElementById('contadormanual');
+const contadorJSON  = document.getElementById('contadorJSON');
+
+	// Variáveis para controlar as contagens da sessão atual
+let totalManual = 0;
+let totalJSON = 0;
+
 const delay = (ms) => new Promise ((resolve) => setTimeout(resolve,ms));
 
 function adicionarPaciente(nome, email, nascimento) {
@@ -37,13 +44,13 @@ async function carregarPacientesIniciais() {
 
 		// simulação de rede lenta ag. 2 segundos (2000 ms)
 
-		await delay (2000);
+		await delay (1000);
 
 
 		// fetch com o AbortSignal de 5 segundos (5000 ms)
 
 		const resposta = await fetch('data/pacientes.json', {
-		signal: AbortSignal.timeout(5000)});
+		signal: AbortSignal.timeout(1000)});
 		console.log(resposta);
 
 		// Nem toda resposta é sucesso — precisamos checar antes de usar
@@ -52,6 +59,10 @@ async function carregarPacientesIniciais() {
 		}
 
 		const dados = await resposta.json(); // converte a resposta em objeto JS
+
+		// Atualiza a lógica do contador do JSON
+		totalJSON = dados.length;
+		contadorJSON.textContent = totalJSON;
 
 		// Adiciona cada paciente vindo do arquivo ao nosso array local
 		dados.forEach((paciente) => {
@@ -81,7 +92,14 @@ formulario.addEventListener('submit', (event) => {
 	adicionarPaciente(nome, email, nascimento);
 	renderizarTabela();
 
+
+	totalManual++;
+	contadorManual.textContent = totalManual;
+
 	formulario.reset();
+
+
+
 });
 
 // Assim que o script carrega, já dispara a busca dos dados iniciais
