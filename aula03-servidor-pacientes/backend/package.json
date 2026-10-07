@@ -5,5 +5,7 @@
 	"main": "server.js",
 	"scripts": {
 		"start": "node server.js"
-	}
+	},
+	"keywords": [],
+	"type": "commonjs"
 }

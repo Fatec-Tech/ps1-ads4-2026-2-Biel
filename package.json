@@ -1,0 +1,19 @@
+{
+  "name": "ps1-ads4-2026-2-biel",
+  "version": "1.0.0",
+  "description": "**Disciplina:** Programação de Scripts I — Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fatec-Tech/ps1-ads4-2026-2-Biel.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Fatec-Tech/ps1-ads4-2026-2-Biel/issues"
+  },
+  "homepage": "https://github.com/Fatec-Tech/ps1-ads4-2026-2-Biel#readme"
+}
