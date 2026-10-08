@@ -1,0 +1,11 @@
+{
+  "name": "aula03-servidor-pacientes",
+  "version": "1.0.0",
+  "description": "**Módulo:** Backend com Node.js (introdução)\r **Pré-requisitos:** Aula 2 (Fetch API, JSON, `async`/`await`)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "commonjs"
+}

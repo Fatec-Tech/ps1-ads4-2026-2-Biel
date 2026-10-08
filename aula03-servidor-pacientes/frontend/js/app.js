@@ -12,7 +12,7 @@ function adicionarPaciente(nome, email, nascimento) {
 function renderizarTabela() {
 	tabela.innerHTML = '';
 
-	pacientes.forEach((paciente) => {
+	pacientes.forEach((paciente) =>'' {
 		const linha = document.createElement('tr');
 		linha.innerHTML = `
       <td>${paciente.nome}</td>
