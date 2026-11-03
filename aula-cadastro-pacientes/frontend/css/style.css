@@ -1,0 +1,8 @@
+.coluna-acoes {
+  white-space: nowrap;
+}
+
+#tabela-pacientes tr.em-edicao {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: -2px;
+}

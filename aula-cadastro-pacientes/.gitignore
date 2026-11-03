@@ -1,0 +1,10 @@
+# Dependências (nunca enviar para o GitHub)
+node_modules/
+
+# Variáveis de ambiente
+.env
+
+# Logs e arquivos do sistema
+npm-debug.log*
+.DS_Store
+Thumbs.db
