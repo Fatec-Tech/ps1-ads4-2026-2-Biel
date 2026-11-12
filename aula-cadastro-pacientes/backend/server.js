@@ -250,3 +250,65 @@ const PORTA = process.env.PORT || 3000;
 app.listen(PORTA, () => {
   console.log(`Servidor rodando na porta ${PORTA}`);
 });
+
+
+// ==========================================
+// 1. Rota para contar o total de pacientes
+// ATENÇÃO: Deve vir ANTES de rotas com :id
+// ==========================================
+app.get('/pacientes/total', (req, res) => {
+  const sql = 'SELECT COUNT(*) AS total FROM pacientes';
+
+  // Usando db.get para retornar uma única linha com o resultado da contagem
+  db.get(sql, [], (err, row) => {
+    if (err) {
+      console.error('Erro ao consultar o total de pacientes:', err.message);
+      return res.status(500).json({ erro: 'Erro interno no servidor' });
+    }
+
+    // Retorna o resultado em formato JSON
+    res.json({ total: row.total });
+  });
+});
+
+// ==========================================
+// 2. Exemplo de rota com parâmetro (DEVE VIR DEPOIS)
+// ==========================================
+app.get('/pacientes/:id', (req, res) => {
+  const id = req.params.id;
+  // Lógica para buscar paciente por ID...
+});
+
+
+// Rota para buscar pacientes por nome (Ex: /pacientes?nome=ana)
+app.get('/pacientes', (req, res) => {
+  // Extrai o parâmetro 'nome' da query string (req.query)
+  const { nome } = req.query;
+
+  // Se o usuário digitou um nome para buscar
+  if (nome) {
+    const sql = 'SELECT * FROM pacientes WHERE nome ILIKE $1';
+    
+    // Monta o valor com '%' para buscar partes do nome independentemente de maiúsculas/minúsculas
+    const valorBusca = `%${nome}%`;
+
+    db.all(sql, [valorBusca], (err, rows) => {
+      if (err) {
+        console.error('Erro ao buscar pacientes por nome:', err.message);
+        return res.status(500).json({ erro: 'Erro interno no servidor' });
+      }
+      res.json(rows);
+    });
+  } else {
+    // Caso nenhum nome seja fornecido na query, retorna todos os pacientes
+    const sql = 'SELECT * FROM pacientes';
+    
+    db.all(sql, [], (err, rows) => {
+      if (err) {
+        console.error('Erro ao listar todos os pacientes:', err.message);
+        return res.status(500).json({ erro: 'Erro interno no servidor' });
+      }
+      res.json(rows);
+    });
+  }
+});
