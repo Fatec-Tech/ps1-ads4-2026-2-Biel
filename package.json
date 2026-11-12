@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Fatec-Tech/ps1-ads4-2026-2-Biel/issues"
   },
-  "homepage": "https://github.com/Fatec-Tech/ps1-ads4-2026-2-Biel#readme"
+  "homepage": "https://github.com/Fatec-Tech/ps1-ads4-2026-2-Biel#readme",
+  "dependencies": {
+    "cors": "^2.8.6"
+  }
 }
