@@ -3,7 +3,7 @@
 // Em desenvolvimento usa o servidor local; publicado, usa o Render.
 // >>> TROQUE "SEU-NOME" PELA URL REAL DO SEU WEB SERVICE NO RENDER <<<
 // ============================================================
-const URL_RENDER = 'https://api-clinica-SEU-NOME.onrender.com';
+const URL_RENDER = 'https://api-clinica-biel.onrender.com';
 const URL_LOCAL = 'http://localhost:3000';
 
 const rodandoLocal =

@@ -4,15 +4,12 @@
   "description": "Servidor Node.js do projeto de cadastro de pacientes",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node --watch --env-file=.env server.js",
+    "db:setup": "node --env-file=.env scripts/criar-tabela.js"
   },
-  "keywords": [],
-  "type": "commonjs",
   "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^4.22.3"
-  },
-  "engines": {
-    "node": ">=18"
+    "express": "^5.0.0",
+    "pg": "^8.23.1"
   }
 }
